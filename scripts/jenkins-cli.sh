@@ -3,16 +3,18 @@
 # Jenkins CLI Script for fish shell
 
 set JENKINS_URL "http://localhost:8080"
-set JENKINS_CLI "./jenkins-cli.jar"
+set JENKINS_CONTAINER "jenkins-container"
 
-if not test -f $JENKINS_CLI
-    echo "❌ Error: jenkins-cli.jar not found"
-    echo "Please run ./scripts/setup.sh first to download it"
+# Check if Jenkins container is running
+if not docker ps --filter "name=$JENKINS_CONTAINER" --filter "status=running" --quiet
+    echo "❌ Error: Jenkins container is not running"
+    echo "Please start Jenkins first: ./scripts/start.sh"
     exit 1
 end
 
 function jenkins_cli
-    java -jar $JENKINS_CLI -s $JENKINS_URL $argv
+    # Execute Jenkins CLI inside the container
+    docker exec $JENKINS_CONTAINER java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080 $argv
 end
 
 if test (count $argv) -eq 0
