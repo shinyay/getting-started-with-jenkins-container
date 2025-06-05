@@ -144,7 +144,7 @@ cd getting-started-with-jenkins-container
 ```groovy
 pipeline {
     agent any
-    
+
     stages {
         stage('Hello World') {
             steps {
@@ -152,7 +152,7 @@ pipeline {
                 echo 'Welcome to your first Jenkins pipeline!'
             }
         }
-        
+
         stage('Environment Info') {
             steps {
                 echo "Build Number: ${BUILD_NUMBER}"
@@ -160,7 +160,7 @@ pipeline {
                 echo "Workspace: ${WORKSPACE}"
             }
         }
-        
+
         stage('Basic Commands') {
             steps {
                 sh 'date'
@@ -170,7 +170,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         success {
             echo '🎉 Build completed successfully!'
@@ -382,7 +382,7 @@ ports:
 
 pipeline {
     agent any
-    
+
     stages {
         stage('Hello World') {
             steps {
@@ -391,7 +391,7 @@ pipeline {
                 echo '=================================='
             }
         }
-        
+
         stage('Environment Info') {
             steps {
                 echo '📋 Environment Information:'
@@ -401,7 +401,7 @@ pipeline {
                 echo "Build URL: ${BUILD_URL}"
             }
         }
-        
+
         stage('Basic Commands') {
             steps {
                 echo '🔍 Running basic system commands:'
@@ -415,7 +415,7 @@ pipeline {
                 sh 'df -h | head -5'
             }
         }
-        
+
         stage('Success Message') {
             steps {
                 echo '✅ Pipeline completed successfully!'
@@ -424,7 +424,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             echo '🧹 This runs regardless of the result.'
