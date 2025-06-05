@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-container
+    ports:
+      - "8080:8080"      # Web UI
+      - "50000:50000"    # エージェント接続
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./jenkins/plugins.txt:/usr/share/jenkins/ref/plugins.txt
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+      - JENKINS_OPTS=--httpPort=8080
+    restart: unless-stopped
+    user: root  # Docker-in-Docker使用時
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/login"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+volumes:
+  jenkins_home:
