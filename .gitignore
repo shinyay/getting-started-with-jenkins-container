@@ -1,0 +1,68 @@
+# Jenkins related files
+jenkins-cli.jar
+*.log
+logs/
+
+# Docker related
+.docker/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Node modules (if using Node.js tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python cache (if using Python tools)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Java related (if using Java tools)
+*.class
+*.jar
+!jenkins-cli.jar
+target/
+build/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Test output
+test-results/
+coverage/
